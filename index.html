@@ -323,7 +323,7 @@
             ];
             
             // Fetch emails from JSON file
-            fetch('/assets/ai-quiz/emails/emails.json')
+            fetch('./assets/ai-quiz/emails/emails.json')
                 .then(response => response.json())
                 .then(data => {
                     emails = shuffleArray(data);
