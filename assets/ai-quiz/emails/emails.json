@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "filename": "alan-bedford-recruiter.png",
+    "text": "Subject: Senior Software Engineer Opportunity at Tech Innovations Inc.\n\nHi there,\n\nI hope this email finds you well. I came across your profile and was impressed by your experience in software development.\n\nI'm currently recruiting for a Senior Software Engineer position at Tech Innovations Inc., a growing tech company specializing in AI solutions. The role offers competitive compensation, flexible working arrangements, and the opportunity to work with cutting-edge technologies.\n\nIf you're open to new opportunities, I'd love to share more details about this position. Would you be available for a brief call this week?\n\nBest regards,\nAlan Bedford\nTech Recruitment Specialist",
+    "correctAnswer": "AI"
+  },
+  {
+    "id": 2,
+    "filename": "antonio-dana.png",
+    "text": "Subject: Follow-up on our conversation about marketing strategy\n\nHi Dana,\n\nIt was great speaking with you yesterday about the new marketing strategy for Q4. I've been thinking more about your concerns regarding our social media approach.\n\nYou raised some valid points about audience engagement that I hadn't fully considered. I've done some additional research and found a few case studies that might address the issues you mentioned.\n\nI've attached them to this email - the one from MediaTrends is particularly relevant to our situation.\n\nLet me know what you think, and if you'd like to discuss further, I'm free tomorrow afternoon.\n\nBest,\nAntonio",
+    "correctAnswer": "Human"
+  },
+  {
+    "id": 3,
+    "filename": "fiverr-zenbean.png",
+    "text": "Subject: Your Fiverr Order #FO92735 is Complete!\n\nHi there,\n\nGreat news! Your order for Logo Design has been completed by zenbean.\n\nPlease review the delivered work and let us know if you need any revisions. We want to ensure you're completely satisfied with the results.\n\nIf everything looks good, please mark the order as complete. Your feedback is valuable to our sellers and helps maintain the quality of services on Fiverr.\n\nThank you for choosing Fiverr for your business needs!\n\nBest regards,\nThe Fiverr Team",
+    "correctAnswer": "AI"
+  },
+  {
+    "id": 4,
+    "filename": "hunter-dana.png",
+    "text": "Subject: Question about Hunter's email verification feature\n\nHi Dana,\n\nI've been using Hunter for about three weeks now and I'm really impressed with the platform so far. The domain search feature has been incredibly helpful for our outreach campaigns.\n\nI'm writing because I'm a bit confused about the email verification process. When I try to verify some of the addresses we've found, I'm getting mixed results. Some show as \"deliverable\" while others are \"risky\" even though they're from the same domain.\n\nIs there a way to batch verify emails? And could you explain a bit more about what makes an email \"risky\" vs. \"deliverable\"?\n\nThanks for your help!\n\nBest,\nMichael",
+    "correctAnswer": "Human"
+  },
+  {
+    "id": 5,
+    "filename": "hunter-malik.png",
+    "text": "Subject: Question about Hunter's API limits\n\nHi Malik,\n\nI hope you're doing well. I've recently upgraded to the Hunter Pro plan and I'm trying to integrate the API with our CRM system.\n\nI noticed that there seems to be a limit on the number of API requests per day, but I couldn't find the exact number in the documentation. Our team needs to verify approximately 500 emails daily - would the Pro plan accommodate this volume?\n\nAlso, we occasionally experience spikes in our verification needs. Is there any flexibility in temporarily increasing limits for specific projects?\n\nI appreciate any guidance you can provide on this matter.\n\nThanks,\nSarah",
+    "correctAnswer": "Human"
+  },
+  {
+    "id": 6,
+    "filename": "mailmeteor-dana.png",
+    "text": "Subject: Mailmeteor Premium Features Overview\n\nHi Dana,\n\nThank you for your interest in Mailmeteor Premium. As requested, I'm providing an overview of our premium features that might benefit your team's email campaigns.\n\nMailmeteor Premium includes:\n- Unlimited emails per day (vs. 75 on free plan)\n- Advanced tracking and analytics\n- Scheduled sending\n- Team collaboration tools\n- Priority customer support\n\nBased on your team size of 15 people, I would recommend our Team plan at $49/month, which includes licenses for up to 20 users.\n\nWould you like me to set up a demo call to show you these features in action?\n\nBest regards,\nThe Mailmeteor Team",
+    "correctAnswer": "AI"
+  },
+  {
+    "id": 7,
+    "filename": "mailmeteor-malik.png",
+    "text": "Subject: Issues with email tracking in Mailmeteor\n\nHey Malik,\n\nI'm having some trouble with the email tracking feature in Mailmeteor. I sent out a campaign to about 50 prospects yesterday, but the dashboard is only showing opens for about half of them, which seems odd based on the responses I've received.\n\nI've double-checked my settings and everything looks correct. Is there a known issue with the tracking pixel? Or could it be related to recipients' privacy settings?\n\nThis is pretty urgent as I need to report on campaign performance by Friday. Any help would be greatly appreciated!\n\nThanks,\nJamie",
+    "correctAnswer": "Human"
+  },
+  {
+    "id": 8,
+    "filename": "smartlead-dana.png",
+    "text": "Subject: Your Smartlead Trial Expires Tomorrow\n\nDear Dana,\n\nI hope you've been enjoying your Smartlead trial over the past two weeks. I wanted to remind you that your trial period expires tomorrow.\n\nDuring your trial, you've sent 127 emails with an open rate of 42%, which is 15% above the industry average. Your campaign \"Product Launch Announcement\" performed particularly well with a 53% open rate.\n\nTo continue using Smartlead without interruption, please upgrade to one of our paid plans. Based on your usage, I recommend our Growth plan at $79/month, which includes up to 5,000 emails per month and all premium features.\n\nDo you have any questions before making your decision?\n\nBest regards,\nThe Smartlead Team",
+    "correctAnswer": "AI"
+  },
+  {
+    "id": 9,
+    "filename": "smartlead-malik.png",
+    "text": "Subject: Weird bounce rates in Smartlead campaign\n\nHi Malik,\n\nI'm seeing something strange with our latest Smartlead campaign and hoping you might have some insight. We launched a new sequence on Tuesday targeting CMOs in the healthcare industry - a list we've used before with good results.\n\nFor some reason, we're getting a 27% bounce rate, which is way higher than our usual 3-5%. I've spot-checked some of the bounced addresses and they seem valid. Even weirder, some addresses that delivered fine in our campaign last month are bouncing now.\n\nHave you seen anything like this before? Any troubleshooting tips would be super helpful. I'm worried there might be something wrong with our account or maybe an issue on Smartlead's end.\n\nThanks for your help!\nAlex",
+    "correctAnswer": "Human"
+  }
+]

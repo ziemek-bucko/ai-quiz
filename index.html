@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Email Quiz - Hunter.io</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #2D3748;
+            line-height: 1.6;
+            background-color: #FAFAFA;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        /* Layout */
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        .nav-bar {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            background-color: #fff;
+            border-bottom: 1px solid #E2E8F0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .menu {
+            display: flex;
+            gap: 32px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .menu span {
+            cursor: pointer;
+        }
+        
+        .dashboard-cta {
+            font-size: 14px;
+            font-weight: 600;
+            color: #FF6600;
+            cursor: pointer;
+        }
+        
+        /* Content */
+        .content {
+            padding: 60px 0;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1A202C;
+            letter-spacing: -0.025em;
+        }
+        
+        .subtitle {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 40px;
+            color: #4A5568;
+        }
+        
+        /* Progress indicator */
+        .progress {
+            margin-bottom: 16px;
+            font-size: 14px;
+            color: #718096;
+            font-weight: 500;
+        }
+        
+        /* Email Container */
+        .email-container {
+            border: 1px solid #E2E8F0;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 32px;
+            text-align: left;
+            min-height: 200px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-size: 16px;
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            white-space: pre-line;
+            line-height: 1.7;
+        }
+        
+        /* Answer Buttons */
+        .answer-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: 1px solid #E2E8F0;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            background-color: #fff;
+            transition: all 0.2s ease;
+            min-width: 240px;
+        }
+        
+        .btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.9;
+        }
+        
+        .btn:hover {
+            background-color: #F7FAFC;
+        }
+        
+        .btn-primary {
+            background-color: #FF6600;
+            color: white;
+            border: 1px solid #FF6600;
+        }
+        
+        .btn-primary:hover {
+            background-color: #E65C00;
+        }
+        
+        /* Results Section */
+        .results {
+            display: none; /* Hidden initially */
+        }
+        
+        .score-section {
+            margin-bottom: 32px;
+        }
+        
+        .score-subtitle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+        
+        .share-icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            color: #4A5568;
+        }
+        
+        .share-icon:hover {
+            color: #FF6600;
+        }
+        
+        /* Feedback */
+        .feedback {
+            margin-top: 16px;
+            padding: 12px;
+            font-weight: 500;
+            display: none;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .feedback.correct {
+            color: #276749;
+        }
+        
+        .feedback.incorrect {
+            color: #C53030;
+        }
+        
+        .btn.correct {
+            background-color: #48BB78;
+            color: white;
+            border-color: #48BB78;
+        }
+        
+        .btn.incorrect {
+            background-color: #F56565;
+            color: white;
+            border-color: #F56565;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .content {
+                padding: 40px 20px;
+            }
+            
+            .answer-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            .subtitle {
+                font-size: 18px;
+            }
+            
+            .nav-bar {
+                padding: 0 20px;
+            }
+            
+            .menu {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="nav-bar">
+        <div class="logo">hunter</div>
+        <div class="menu">
+            <span>Product</span>
+            <span>Pricing</span>
+            <span>Resources</span>
+            <span>Company</span>
+        </div>
+        <div class="dashboard-cta">Dashboard →</div>
+    </div>
+    
+    <!-- Quiz Content -->
+    <div class="container">
+        <div class="content" id="quiz-content">
+            <h1>Test your AI radar</h1>
+            <p class="subtitle">Was this email created using AI?</p>
+            
+            <div class="progress">Email <span id="current-email">1</span> of 9</div>
+            
+            <div class="email-container" id="email-text">
+                Loading email...
+            </div>
+            
+            <div class="answer-buttons">
+                <button class="btn" id="btn-ai">Yes, it was created using AI</button>
+                <button class="btn" id="btn-human">No, it was written by a human</button>
+            </div>
+            
+            <div class="feedback" id="feedback"></div>
+        </div>
+        
+        <!-- Results Content (initially hidden) -->
+        <div class="content results" id="results-content">
+            <h1>Your score:</h1>
+            
+            <div class="score-subtitle">
+                <span id="score-text">You got 0/9 emails right (0th percentile)</span>
+                <svg class="share-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+            </div>
+            
+            <button class="btn btn-primary" id="see-results-btn">See how others did</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const btnAI = document.getElementById('btn-ai');
+            const btnHuman = document.getElementById('btn-human');
+            const quizContent = document.getElementById('quiz-content');
+            const resultsContent = document.getElementById('results-content');
+            const progressText = document.getElementById('current-email');
+            const emailText = document.getElementById('email-text');
+            const scoreText = document.getElementById('score-text');
+            const feedbackElement = document.getElementById('feedback');
+            const shareBtn = document.querySelector('.share-icon');
+            const seeResultsBtn = document.getElementById('see-results-btn');
+            
+            let currentEmailIndex = 0;
+            let score = 0;
+            let emails = [];
+            let userAnswers = [];
+            
+            // Percentile table from PRD
+            const percentileTable = [
+                { score: 0, percentile: 1.10 },
+                { score: 1, percentile: 6.08 },
+                { score: 2, percentile: 17.13 },
+                { score: 3, percentile: 39.78 },
+                { score: 4, percentile: 61.88 },
+                { score: 5, percentile: 82.32 },
+                { score: 6, percentile: 95.03 },
+                { score: 7, percentile: 98.34 },
+                { score: 8, percentile: 99.45 },
+                { score: 9, percentile: 100.00 }
+            ];
+            
+            // Fetch emails from JSON file
+            fetch('/assets/ai-quiz/emails/emails.json')
+                .then(response => response.json())
+                .then(data => {
+                    emails = shuffleArray(data);
+                    displayCurrentEmail();
+                })
+                .catch(error => {
+                    console.error('Error loading emails:', error);
+                    emailText.textContent = 'Error loading emails. Please refresh the page.';
+                });
+            
+            function shuffleArray(array) {
+                // Fisher-Yates shuffle algorithm
+                const newArray = [...array];
+                for (let i = newArray.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+                }
+                return newArray;
+            }
+            
+            function displayCurrentEmail() {
+                if (currentEmailIndex < emails.length) {
+                    const email = emails[currentEmailIndex];
+                    emailText.textContent = email.text;
+                    progressText.textContent = (currentEmailIndex + 1);
+                    feedbackElement.style.display = 'none';
+                }
+            }
+            
+            function handleAnswer(answer) {
+                if (currentEmailIndex >= emails.length) return;
+                
+                const email = emails[currentEmailIndex];
+                const isCorrect = answer === email.correctAnswer;
+                const selectedButton = answer === 'AI' ? btnAI : btnHuman;
+                
+                userAnswers.push({
+                    emailId: email.id,
+                    userAnswer: answer,
+                    correctAnswer: email.correctAnswer,
+                    isCorrect: isCorrect
+                });
+                
+                // Disable both buttons
+                btnAI.disabled = true;
+                btnHuman.disabled = true;
+                
+                // Change button color based on correctness
+                if (isCorrect) {
+                    score++;
+                    selectedButton.classList.add('correct');
+                    showFeedback(true);
+                } else {
+                    selectedButton.classList.add('incorrect');
+                    showFeedback(false);
+                }
+                
+                // Wait a moment to show feedback before advancing
+                setTimeout(() => {
+                    currentEmailIndex++;
+                    
+                    if (currentEmailIndex < emails.length) {
+                        // Reset button styles
+                        btnAI.classList.remove('correct', 'incorrect');
+                        btnHuman.classList.remove('correct', 'incorrect');
+                        btnAI.disabled = false;
+                        btnHuman.disabled = false;
+                        
+                        displayCurrentEmail();
+                    } else {
+                        showResults();
+                    }
+                }, 2000);
+            }
+            
+            function showFeedback(isCorrect) {
+                feedbackElement.textContent = isCorrect ? 
+                    'Correct! ✓' : 
+                    'Incorrect! The correct answer was ' + emails[currentEmailIndex].correctAnswer;
+                feedbackElement.className = 'feedback ' + (isCorrect ? 'correct' : 'incorrect');
+                feedbackElement.style.display = 'block';
+            }
+            
+            function showResults() {
+                quizContent.style.display = 'none';
+                resultsContent.style.display = 'block';
+                
+                // Find percentile for the score
+                const percentileData = percentileTable.find(item => item.score === score) || { percentile: 0 };
+                const percentile = Math.round(percentileData.percentile);
+                
+                // Update score text
+                scoreText.textContent = `You got ${score}/9 emails right (${percentile}${getOrdinalSuffix(percentile)} percentile)`;
+            }
+            
+            function getOrdinalSuffix(num) {
+                const j = num % 10;
+                const k = num % 100;
+                if (j === 1 && k !== 11) {
+                    return 'st';
+                }
+                if (j === 2 && k !== 12) {
+                    return 'nd';
+                }
+                if (j === 3 && k !== 13) {
+                    return 'rd';
+                }
+                return 'th';
+            }
+            
+            function shareToLinkedIn() {
+                const percentileData = percentileTable.find(item => item.score === score) || { percentile: 0 };
+                const percentile = Math.round(percentileData.percentile);
+                
+                const quizUrl = window.location.href.split('?')[0];
+                const title = `I scored ${score}/9 on Hunter's AI Email Quiz!`;
+                const summary = `I got ${percentile}${getOrdinalSuffix(percentile)} percentile. Try it now: ${quizUrl}`;
+                
+                const shareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(quizUrl)}&title=${encodeURIComponent(title)}&summary=${encodeURIComponent(summary)}&source=hunter.io`;
+                
+                window.open(shareUrl, '_blank', 'width=600,height=400');
+            }
+            
+            // Event listeners
+            btnAI.addEventListener('click', function() {
+                handleAnswer('AI');
+            });
+            
+            btnHuman.addEventListener('click', function() {
+                handleAnswer('Human');
+            });
+            
+            shareBtn.addEventListener('click', shareToLinkedIn);
+            
+            seeResultsBtn.addEventListener('click', function() {
+                alert('This would navigate to the results page in the full implementation.');
+            });
+        });
+    </script>
+</body>
+</html>
