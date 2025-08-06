@@ -65,7 +65,7 @@
         
         /* Content */
         .content {
-            padding: 60px 0;
+            padding: 30px 0;
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
@@ -109,6 +109,20 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
             white-space: pre-line;
             line-height: 1.7;
+            position: relative;
+        }
+        
+        /* Email Counter */
+        .email-counter {
+            position: absolute;
+            bottom: 8px;
+            right: 12px;
+            font-size: 12px;
+            color: #718096;
+            font-weight: 500;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 2px 6px;
+            border-radius: 4px;
         }
         
         /* Answer Buttons */
@@ -259,10 +273,9 @@
             <h1>Test your AI radar</h1>
             <p class="subtitle">Was this email created using AI?</p>
             
-            <div class="progress">Email <span id="current-email">1</span> of 9</div>
-            
             <div class="email-container" id="email-text">
                 Loading email...
+                <div class="email-counter">Email <span id="current-email">1</span> of 9</div>
             </div>
             
             <div class="answer-buttons">
@@ -347,8 +360,7 @@
             function displayCurrentEmail() {
                 if (currentEmailIndex < emails.length) {
                     const email = emails[currentEmailIndex];
-                    emailText.textContent = email.text;
-                    progressText.textContent = (currentEmailIndex + 1);
+                    emailText.innerHTML = email.text + '<div class="email-counter">Email <span id="current-email">' + (currentEmailIndex + 1) + '</span> of 9</div>';
                     feedbackElement.style.display = 'none';
                 }
             }
